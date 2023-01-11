@@ -4,8 +4,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "airbnb-base"
-    // "airbnb-typescript/base"
+    "airbnb-base",
+    "airbnb-typescript/base"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",

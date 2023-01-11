@@ -1,7 +1,7 @@
 import { ErrorMsg } from "../types/ErrorMsg.js";
 import { StatusCode } from "../types/StatusCode.js";
 
-export const getErrorCode = (error: ErrorMsg) => {
+export const getStatusCode = (error: ErrorMsg) => {
   switch (error) {
     case ErrorMsg.UserIdIsInvalid:
     case ErrorMsg.InvalidBody:
@@ -10,7 +10,7 @@ export const getErrorCode = (error: ErrorMsg) => {
     case ErrorMsg.NonExistingEndpoint:
       return StatusCode.NotExist;
     case ErrorMsg.InternalServerError:
-      // default:
+    default:
       return StatusCode.ServerError;
   }
 };
