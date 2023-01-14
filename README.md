@@ -2,23 +2,23 @@
 
 Hello!
 
-### How to start
+## How to start
 
-For use this API please:
+**For use this API please:**
 
-1) copy it to you computer use this command:
+1) Copy repository to you computer use this command:
 
 > git clone git@github.com:LilithPrimary/crud-api.git
 
-2) change directory:
+2) Change directory:
 
 > cd crud-api
 
-3) install deps:
+3) Install deps:
 
 > npm i
 
-Now you can use scripts:
+**Now you can use scripts:**
 
 > npm run start:dev
 
@@ -26,7 +26,7 @@ for development. Nodemon and ts-node are used.
 
 > npm run start:prod
 
-for production mode. Webpack on prod mode are used.
+for production mode. Webpack on prod mode and ts-node are used.
 
 > npm test
 
@@ -36,7 +36,7 @@ for watching test cases
 
 for watching test coverage
 
-### Implemented endpoint: api/users
+## Implemented endpoint: api/users
 
 GET api/users - to get all users
 
