@@ -1,6 +1,6 @@
 # crud-api
 
-Hello!
+*Hello!*
 
 ## How to start
 
@@ -59,4 +59,4 @@ User JSON for request body (all fields required):
 ```
 
 
-Thank you!
+*Thank you!*
