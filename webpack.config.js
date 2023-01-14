@@ -1,5 +1,6 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import webpack from 'webpack';
 
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
@@ -15,6 +16,7 @@ export default ({ mode }) => ({
   output: {
     path: resolve(__dirname, 'dist'),
     filename: '[name].bundle.cjs',
+    clean: true,
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -27,5 +29,22 @@ export default ({ mode }) => ({
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new webpack.NormalModuleReplacementPlugin(/.*/, function (resource) {
+      const lowerCaseRequest = resource.request.toLowerCase();
+
+      if (
+        !lowerCaseRequest.includes('node_modules') &&
+        lowerCaseRequest.endsWith('.js') &&
+        lowerCaseRequest[0] === '.' &&
+        resource.context.startsWith(resolve(__dirname)) &&
+        !resource.context.toLowerCase().includes('node_modules')
+      ) {
+        resource.request =
+          resource.request.substr(0, resource.request.length - 3) + '.ts';
+        resource.request;
+      }
+    }),
+  ],
 });

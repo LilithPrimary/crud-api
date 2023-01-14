@@ -1,12 +1,13 @@
-import { IUser } from "../../types/IUser.js";
-import { IdValidator } from "../IdValidator.js";
-import { parseURL } from "../parseUrl.js";
+import { IUser } from '../../types/IUser';
+import { IdValidator } from '../IdValidator';
+import { parseURL } from '../parseUrl';
 
 export const getHandler = (url: string, users: IUser[]) => {
   const [, , id] = parseURL(url);
   if (id) {
     IdValidator(id, users);
-    return users.find((user) => user.id === id);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return users.find((user) => user.id === id)!;
   }
   return users;
 };

@@ -1,7 +1,7 @@
 import { validate } from 'uuid';
 
-import { ErrorMsg } from '../types/ErrorMsg.js';
-import { IUser } from '../types/IUser.js';
+import { ErrorMsg } from '../types/ErrorMsg';
+import { IUser } from '../types/IUser';
 
 export const IdValidator = (id: string, users: IUser[]) => {
   if (!validate(id)) {

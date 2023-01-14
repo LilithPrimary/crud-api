@@ -1,15 +1,19 @@
-import { IncomingMessage } from "http";
-import { JSONValidator } from "./JSONValidator.js";
+import { IncomingMessage } from 'http';
+import { bodyValidator } from './BodyValidator';
+import { JSONValidator } from './JSONValidator';
 
 export const getRequestBody = async (req: IncomingMessage) => {
   const buffers = [];
 
+  // eslint-disable-next-line no-restricted-syntax
   for await (const chunk of req) {
     buffers.push(chunk);
   }
-  const body = Buffer.concat(buffers).toString();
+  const bodyRaw = Buffer.concat(buffers).toString();
 
-  console.log('getBody', body);
+  const body = JSONValidator(bodyRaw);
 
-  return JSONValidator(body);
+  bodyValidator(body);
+
+  return body;
 };

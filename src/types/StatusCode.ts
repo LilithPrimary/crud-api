@@ -5,4 +5,5 @@ export const enum StatusCode {
   InvalidData = 400,
   NotExist = 404,
   ServerError = 500,
+  NotImplemented = 501,
 }

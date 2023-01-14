@@ -1,4 +1,4 @@
-import { ErrorMsg } from "../types/ErrorMsg.js";
+import { ErrorMsg } from '../types/ErrorMsg';
 
 export const JSONValidator = (json: string) => {
   try {

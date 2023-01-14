@@ -1,4 +1,4 @@
-import { IUser } from "./IUser.js";
+import { IUser } from './IUser';
 
 interface IErrorResponse {
   code: number;
@@ -6,5 +6,3 @@ interface IErrorResponse {
 }
 
 export type Response = IErrorResponse | IUser | IUser[];
-
-

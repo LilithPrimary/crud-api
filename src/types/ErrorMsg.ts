@@ -3,5 +3,6 @@ export const enum ErrorMsg {
   UserIdIsInvalid = 'UserId is invalid (wrong format)',
   UserIdDoesntExist = 'UserId doesn\'t exist',
   InvalidBody = 'Invalid request body format',
-  NonExistingEndpoint = 'Non-existing endpoint'
+  NonExistingEndpoint = 'Non-existing endpoint',
+  NotImplemented = 'Not Implemented'
 }

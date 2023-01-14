@@ -1,4 +1,4 @@
-import { UserFields } from "./UserFields";
+import { UserFields } from './UserFields';
 
 export interface IUser {
   [UserFields.Id]: string;

@@ -1,68 +1,92 @@
 import { createServer } from 'http';
-import { PORT } from '../constants/PORT.js';
-import { Response } from '../types/IResponse.js';
-import { IUser } from '../types/IUser.js';
-import { Methods } from '../types/Methods.js';
-import { StatusCode } from '../types/StatusCode.js';
-import { getRequestBody } from '../utils/getRequestBody.js';
-import { getStatusCode } from '../utils/getStatusCode.js';
-import { getHandler } from '../utils/methodsHandler/getHandler.js';
-import { postHandler } from '../utils/methodsHandler/postHandler.js';
-import { URLValidator } from '../utils/URLValidator.js';
+import { PORT } from '../constants/PORT';
+import { Color } from '../types/Color';
+import { ErrorMsg } from '../types/ErrorMsg';
+import { Response } from '../types/IResponse';
+import { IUser } from '../types/IUser';
+import { Methods } from '../types/Methods';
+import { StatusCode } from '../types/StatusCode';
+import { colorizeText } from '../utils/colorizeText';
+import { errorHandler } from '../utils/errorHandler';
+import { getRequestBody } from '../utils/getRequestBody';
+import { deleteHandler } from '../utils/methodsHandler/deleteHandler';
+import { getHandler } from '../utils/methodsHandler/getHandler';
+import { postHandler } from '../utils/methodsHandler/postHandler';
+import { putHandler } from '../utils/methodsHandler/putHandler';
+import { URLValidator } from '../utils/URLValidator';
 
-const users: IUser[] = [];
+let users: IUser[] = [];
 
 export const app = () => {
   const server = createServer(async (req, res) => {
-    console.log(req.url);
-    let response: Response;
-
-    res.setHeader('Content-Type', 'application/json');
-    const url = req.url;
+    let response: Response = null;
+    let code: number;
+    const { url } = req;
     const method = <Methods>req.method;
+    res.setHeader('Content-Type', 'application/json');
+
     try {
-
       URLValidator(url, method);
-
-      let code: number;
 
       switch (method) {
         case Methods.GET:
+          console.log(colorizeText(Color.lightblue, `[${Methods.GET}]`), colorizeText(Color.yellow, `${url}`));
+
           code = StatusCode.Successful200;
 
           response = getHandler(url, users);
-
           break;
-        case Methods.POST:
+
+        case Methods.POST: {
           const body = await getRequestBody(req);
 
           console.log(body);
 
+          console.log(colorizeText(Color.lightblue, `[${Methods.POST}]`), colorizeText(Color.yellow, `${url}`), body);
+
           code = StatusCode.Successful201;
 
           response = postHandler(users, body);
+          break;
+        }
+
+        case Methods.PUT: {
+          const body = await getRequestBody(req);
+
+          console.log(colorizeText(Color.lightblue, `[${Methods.PUT}]`), colorizeText(Color.yellow, `${url}`), body);
+
+          response = putHandler(url, users, body);
+
+          code = StatusCode.Successful200;
 
           break;
+        }
 
+        case Methods.DELETE: {
+          console.log(colorizeText(Color.lightblue, `[${Methods.DELETE}]`), colorizeText(Color.yellow, `${url}`));
+
+          users = deleteHandler(url, users);
+
+          code = StatusCode.Successful204;
+
+          break;
+        }
+
+        default:
+          throw new Error(ErrorMsg.NotImplemented);
       }
 
       res.writeHead(code);
-
     } catch (err) {
-      const message = err.message;
+      response = errorHandler(err.message);
 
-      const code = getStatusCode(message);
-
-      response = { code, message };
-
-      res.writeHead(code);
-
+      res.writeHead(response.code);
     } finally {
       res.end(JSON.stringify(response));
     }
   });
 
   server.listen(PORT, () => {
-    console.log(`Server started on ${PORT} port`);
+    console.log('Server started on', colorizeText(Color.yellow, `${PORT}`), 'port');
   });
 };
