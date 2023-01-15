@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 
 import { IUser } from '../src/types/IUser';
-import { putHandler } from '../src/utils/methodsHandler/putHandler';
+import { putHandler } from '../src/server/methodsHandler/putHandler';
 import { BASE_URL } from '../src/constants/BASE_URL';
 import { UserRequest } from '../src/types/UserRequest';
 import { UserFields } from '../src/types/UserFields';

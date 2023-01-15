@@ -46,7 +46,7 @@ to
 
 - for watching test coverage:
 
-> npm test:coverage
+> npm run test:coverage
 
 ## Implemented endpoint: api/users
 

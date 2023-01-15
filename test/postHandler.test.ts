@@ -1,7 +1,7 @@
 import { validate } from 'uuid';
 
 import { IUser } from '../src/types/IUser';
-import { postHandler } from '../src/utils/methodsHandler/postHandler';
+import { postHandler } from '../src/server/methodsHandler/postHandler';
 import { UserFields } from '../src/types/UserFields';
 import { UserRequest } from '../src/types/UserRequest';
 
