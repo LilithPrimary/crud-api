@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 
 import { IUser } from '../src/types/IUser';
-import { deleteHandler } from '../src/utils/methodsHandler/deleteHandler';
+import { deleteHandler } from '../src/server/methodsHandler/deleteHandler';
 import { BASE_URL } from '../src/constants/BASE_URL';
 
 const id = v4();
