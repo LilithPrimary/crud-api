@@ -36,13 +36,17 @@ to
 
 > npm run start:prod
 
+- for development in load balance mode:
+
+> npm run start:multi
+
 - for watching test cases:
 
 > npm test
 
 - for watching test coverage:
 
-> npm test:coverage
+> npm run test:coverage
 
 ## Implemented endpoint: api/users
 
