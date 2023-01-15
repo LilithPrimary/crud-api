@@ -36,6 +36,10 @@ to
 
 > npm run start:prod
 
+- for development in load balance mode:
+
+> npm run start:multi
+
 - for watching test cases:
 
 > npm test

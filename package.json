@@ -7,6 +7,7 @@
   "scripts": {
     "start:dev": "nodemon",
     "start:prod": "npm run build && node ./dist/main.bundle.cjs",
+    "start:multi": "nodemon --mode=multi",
     "build": "webpack --config ./webpack.config.js --env mode=prod",
     "dev": "webpack --config ./webpack.config.js",
     "test": "jest",
