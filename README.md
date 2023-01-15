@@ -28,21 +28,21 @@ to
 
 **Now you can use scripts:**
 
+- for development (nodemon and ts-node are used):
+
 > npm run start:dev
 
-for development. Nodemon and ts-node are used.
+- for production mode (webpack on prod mode is used):
 
 > npm run start:prod
 
-for production mode. Webpack on prod mode is used.
+- for watching test cases:
 
 > npm test
 
-for watching test cases
+- for watching test coverage:
 
 > npm test:coverage
-
-for watching test coverage
 
 ## Implemented endpoint: api/users
 
