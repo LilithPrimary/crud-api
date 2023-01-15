@@ -18,6 +18,14 @@ _Hello!_
 
 > npm i
 
+4. Rename
+
+> .env.example
+
+to
+
+> .env
+
 **Now you can use scripts:**
 
 > npm run start:dev
