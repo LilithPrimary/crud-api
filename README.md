@@ -26,7 +26,7 @@ for development. Nodemon and ts-node are used.
 
 > npm run start:prod
 
-for production mode. Webpack on prod mode and ts-node are used.
+for production mode. Webpack on prod mode is used.
 
 > npm test
 
