@@ -1,7 +1,7 @@
 import { IUser } from '../../types/IUser';
 import { UserRequest } from '../../types/UserRequest';
-import { IdValidator } from '../IdValidator';
-import { parseURL } from '../parseUrl';
+import { IdValidator } from '../../utils/IdValidator';
+import { parseURL } from '../../utils/parseUrl';
 
 export const putHandler = (url: string, users: IUser[], body: UserRequest) => {
   const [, , id] = parseURL(url);
