@@ -16,6 +16,8 @@ export const balancer = (server: Server) => {
 
     console.log(`Primary ${process.pid} is running`);
 
+    // Workers can share any TCP connection
+    // In this case it is an HTTP server
     let workers = numCPUs.map(() => cluster.fork({ WORKER_PORT: PORT }));
 
     cluster.on('exit', (worker) => {
